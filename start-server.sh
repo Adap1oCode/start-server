@@ -50,6 +50,8 @@ run_github_setup() {
 
 # Main function to prompt user
 main() {
+    current_hostname=$(hostname)
+    echo "The current hostname is: $current_hostname"
     read -p "Do you want to change the existing hostname? (Y/N): " answer
     case $answer in
         [Yy]* ) change_hostname;;
@@ -58,19 +60,4 @@ main() {
     esac
 
     read -p "Do you want to run the specified commands? (Y/N): " answer
-    case $answer in
-        [Yy]* ) run_commands;;
-        [Nn]* ) echo "Commands not executed.";;
-        * ) echo "Invalid input. Please enter Y or N.";;
-    esac
-
-    read -p "Do you want to run the GitHub setup commands? (Y/N): " answer
-    case $answer in
-        [Yy]* ) run_github_setup;;
-        [Nn]* ) echo "GitHub setup commands not executed.";;
-        * ) echo "Invalid input. Please enter Y or N.";;
-    esac
-}
-
-# Execute the main function
-main
+    case $answer i
