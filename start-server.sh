@@ -52,12 +52,15 @@ run_github_setup() {
 main() {
     current_hostname=$(hostname)
     echo "The current hostname is: $current_hostname"
-    read -p "Do you want to change the existing hostname? (Y/N): " answer
+    change_hostname
+
+    read -p "Do you want to run the specified commands? (Y/N): " answer
     case $answer in
-        [Yy]* ) change_hostname;;
-        [Nn]* ) echo "No changes made.";;
+        [Yy]* ) run_commands;;
+        [Nn]* ) echo "Commands not executed.";;
         * ) echo "Invalid input. Please enter Y or N.";;
     esac
 
-    read -p "Do you want to run the specified commands? (Y/N): " answer
-    case $answer i
+    read -p "Do you want to run the GitHub setup commands? (Y/N): " answer
+    case $answer in
+  
