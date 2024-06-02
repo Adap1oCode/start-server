@@ -35,6 +35,12 @@ run_commands() {
     # Display the public key
     cat ~/.ssh/$hostname.pub
 
+    # Prompt user to type 'c' to continue
+    read -p "Type 'c' to continue after copying the public key: " confirm
+    while [ "$confirm" != "c" ]; do
+        read -p "Invalid input. Please type 'c' to continue: " confirm
+    done
+
     # Pause for 40 seconds
     echo "Pausing for 40 seconds..."
     sleep 40
