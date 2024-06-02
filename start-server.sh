@@ -63,4 +63,11 @@ main() {
 
     read -p "Do you want to run the GitHub setup commands? (Y/N): " answer
     case $answer in
-  
+        [Yy]* ) run_github_setup;;
+        [Nn]* ) echo "GitHub setup commands not executed.";;
+        * ) echo "Invalid input. Please enter Y or N.";;
+    esac
+}
+
+# Execute the main function
+main
