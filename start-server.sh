@@ -55,8 +55,8 @@ main() {
     current_hostname=$(hostname)
     echo "The current hostname is: $current_hostname"
     change_hostname
-    run_commands;;
-    run_github_setup;;
+    run_commands
+    run_github_setup
      
 }
 
