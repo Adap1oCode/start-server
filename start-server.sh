@@ -40,10 +40,6 @@ run_commands() {
     while [ "$confirm" != "c" ]; do
         read -p "Invalid input. Please type 'c' to continue: " confirm
     done
-
-    # Pause for 40 seconds
-    echo "Pausing for 40 seconds..."
-    sleep 40
 }
 
 # Function to run the GitHub setup commands
@@ -59,20 +55,9 @@ main() {
     current_hostname=$(hostname)
     echo "The current hostname is: $current_hostname"
     change_hostname
-
-    read -p "Do you want to run the specified commands? (Y/N): " answer
-    case $answer in
-        [Yy]* ) run_commands;;
-        [Nn]* ) echo "Commands not executed.";;
-        * ) echo "Invalid input. Please enter Y or N.";;
-    esac
-
-    read -p "Do you want to run the GitHub setup commands? (Y/N): " answer
-    case $answer in
-        [Yy]* ) run_github_setup;;
-        [Nn]* ) echo "GitHub setup commands not executed.";;
-        * ) echo "Invalid input. Please enter Y or N.";;
-    esac
+    run_commands;;
+    run_github_setup;;
+     
 }
 
 # Execute the main function
