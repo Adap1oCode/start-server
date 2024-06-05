@@ -13,11 +13,12 @@ change_hostname() {
     fi
 
     # Change the hostname
-    sudo hostnamectl set-hostname "$new_hostname"
-    echo "Hostname changed to $new_hostname"
+    full_hostname="$new_hostname.adaplo.co.uk"
+    sudo hostnamectl set-hostname "$full_hostname"
+    echo "Hostname changed to $full_hostname"
 
     # Update /etc/hosts
-    sudo sed -i "s/127.0.1.1.*/127.0.1.1\t$new_hostname/" /etc/hosts
+    sudo sed -i "s/127.0.1.1.*/127.0.1.1\t$full_hostname/" /etc/hosts
     echo "/etc/hosts updated with the new hostname"
 }
 
@@ -29,7 +30,7 @@ run_commands() {
 
     # Generate a new SSH key with .adaplo.co.uk appended to the hostname
     hostname=$(hostname)
-    full_hostname="$hostname.adaplo.co.uk"
+    full_hostname="$hostname"
     ssh-keygen -t rsa -b 4096 -C "$full_hostname" -f ~/.ssh/$full_hostname
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/$full_hostname
